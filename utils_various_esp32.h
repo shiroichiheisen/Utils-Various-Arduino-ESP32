@@ -4,9 +4,6 @@
 #include <Arduino.h>
 #include <ESP32AnalogRead.h>
 
-#define enabledebug(velocity) Serial.begin(velocity)
-#define debug(message) Serial.println(message)
-
 #define pwm_porcentage 0
 #define pwm_dutyCycle 1
 
