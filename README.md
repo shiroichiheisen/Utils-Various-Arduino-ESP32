@@ -14,11 +14,11 @@ Also download the [Esp32AnalogRead](https://github.com/madhephaestus/ESP32Analog
 
 In this library, you have:
 
-[pwm - Control the PWM on Esp32](https://github.com/shiroichiheisen/Utils-Various-Arduino#pwm-function)
+[pwm - Control the PWM on Esp32](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#pwm-function)
 
-[ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc_cal-function) 
+[ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#ntc_cal-function) 
 
-[PSRAM - PSRAM tools](https://github.com/shiroichiheisen/Utils-Various-Arduino#psram-tools)
+[psram - PSRAM tools](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#psram-tools)
 ---
 
 ## pwm function:
