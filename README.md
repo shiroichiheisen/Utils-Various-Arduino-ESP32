@@ -18,7 +18,7 @@ In this library, you have:
 
 [ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#ntc_cal-function) 
 
-[psram - PSRAM tools](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#psram-tools)
+[psram - psram tools](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#psram-tools)
 ---
 
 ## pwm function:
