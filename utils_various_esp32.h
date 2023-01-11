@@ -44,4 +44,20 @@ private:
 	float p, v, r1, ar, k, r25c;
 	ESP32AnalogRead NTCreading;
 };
+
+// Class for making an analogread
+class arRdiverCalc
+{
+public:
+	arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r1_r2);
+	// Make a resistor divider voltage calculation;
+	float read() { return r(); };
+	// Make a resistor divider voltage calculation;
+	float r();
+
+private:
+	int resolution, mVolt;
+	float resistor_r1_r2;
+	ESP32AnalogRead Vreading;
+};
 #endif

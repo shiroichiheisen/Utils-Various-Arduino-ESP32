@@ -19,6 +19,8 @@ In this library, you have:
 [ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#ntc_cal-function) 
 
 [psram - psram tools](https://github.com/shiroichiheisen/Utils-Various-Arduino-ESP32#psram-tools)
+
+[arRdividerCalc - Resistor divider mVoltage calculation](https://github.com/shiroichiheisen/Utils-Various-Arduino#arrdividercalc-function)
 ---
 
 ## pwm function:
@@ -88,3 +90,34 @@ float *floatArray = PSRAMFloatArray(n_elements);
 // Define an char array on PSRAM with the size of elements you want - Ex: char *intArray = PSRAMIntArray(10)
 char *charArray = PSRAMCharArray(n_elements);
 ```
+
+---
+
+## arRdividerCalc function:
+
+The arRdividerCalc function is a wrapper on the analogRead, but with better code readability.
+
+To use declare the object with the:
+
+potPin - Pin to read from - Mandatory
+
+analog_resolution - analog resolution of the adc to convert the readings to milivolts or volts - Mandatory
+
+mVoltage - Input volt on the device calculated on milivolts - Mandatory
+
+r1/r2 - for resistors dividers, the r1/r2 calculation -  Mandatory
+
+
+```
+arRdividerCalc pot(int potPin, int analog_resolution, int mVoltage, float r1_r2);
+
+```
+
+After declaring, you can read the pin:
+
+```
+pot.r();
+pot.read();
+```
+
+---
