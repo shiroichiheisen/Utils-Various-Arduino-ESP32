@@ -54,7 +54,7 @@ float ntc_cal::r(String reading)
   return choose;
 }
 
-arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, int r1, int r2)
+arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r1, float r2)
 {
   Vreading.attach(pin);
   resolution = pow(2, analog_resolution);

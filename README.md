@@ -105,11 +105,11 @@ analog_resolution - analog resolution of the adc to convert the readings to mili
 
 mVoltage - Input volt on the device calculated on milivolts - Mandatory
 
-r1/r2 - for resistors dividers, the r1/r2 calculation -  Mandatory
+r1 and r2 - Resistor values in Ohms - vcc-r1-analogPing-r2-gnd  Mandatory
 
 
 ```
-arRdividerCalc pot(int potPin, int analog_resolution, int mVoltage, float r1_r2);
+arRdividerCalc pot(int potPin, int analog_resolution, int mVoltage, float r1, float r2);
 
 ```
 
