@@ -49,7 +49,7 @@ private:
 class arRdiverCalc
 {
 public:
-	arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r1_r2);
+	arRdiverCalc(int pin, int analog_resolution, int mVoltage, int r1, int r2);
 	// Make a resistor divider voltage calculation;
 	float read() { return r(); };
 	// Make a resistor divider voltage calculation;

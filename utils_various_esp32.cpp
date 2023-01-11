@@ -54,17 +54,17 @@ float ntc_cal::r(String reading)
   return choose;
 }
 
-arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r1_r2)
+arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, int r1, int r2)
 {
   Vreading.attach(pin);
   resolution = pow(2, analog_resolution);
   mVolt = mVoltage;
-  resistor_r1_r2 = r1_r2 + 1;
+  resistor_r1_r2 = r1 / r2;
+  resistor_r1_r2 += 1;
 }
 
 float arRdiverCalc::r()
 {
-  float reading = map(Vreading.readRaw(), 0, resolution, 0, mVolt);
-  reading = (reading * resistor_r1_r2);
+  float reading = Vreading.readRaw() * (mVolt / resolution) * resistor_r1_r2;
   return reading;
 }
