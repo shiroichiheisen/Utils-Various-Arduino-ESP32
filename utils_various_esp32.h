@@ -65,7 +65,7 @@ private:
 class IsenseCalcEsp
 {
 public:
-	IsenseCalcEsp(int pin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp);
+	IsenseCalcEsp(int pin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp = 0);
 	// Make a resistor divider voltage calculation;
 	float read() { return r(); };
 	// Make a resistor divider voltage calculation;

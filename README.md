@@ -138,7 +138,7 @@ mVoltage - Input volt on the device calculated on milivolts - Mandatory
 
 shuntResistance - resistance of the shunt resistor in mOhms - Mandatory
 
-mAmpOrAmp - to output in mAmps(0) or Amps(1) - Mandatory
+mAmpOrAmp - to output in mAmps(0) or Amps(1) - Not Mandatory
 
 ```
 IsenseCalcEsp pot(int potPin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp);
