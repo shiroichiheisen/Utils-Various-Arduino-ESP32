@@ -60,4 +60,20 @@ private:
 	float resistor_r1_r2;
 	ESP32AnalogRead Vreading;
 };
+
+// Class for making an analogread
+class IsenseCalcEsp
+{
+public:
+	IsenseCalcEsp(int pin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp);
+	// Make a resistor divider voltage calculation;
+	float read() { return r(); };
+	// Make a resistor divider voltage calculation;
+	float r();
+
+private:
+	int resolution, mVolt, select;
+	float shuntR;
+	ESP32AnalogRead Vreading;
+};
 #endif

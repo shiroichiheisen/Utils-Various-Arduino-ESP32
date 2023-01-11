@@ -65,6 +65,25 @@ arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r
 
 float arRdiverCalc::r()
 {
-  float reading = Vreading.readRaw() * (mVolt / resolution) * resistor_r1_r2;
+  float reading = (Vreading.readRaw() * (mVolt / resolution)) * resistor_r1_r2;
+  return reading;
+}
+
+IsenseCalcEsp::IsenseCalcEsp(int pin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp)
+{
+  Vreading.attach(pin);
+  resolution = pow(2, analog_resolution);
+  mVolt = mVoltage;
+  shuntR = shuntResistance;
+  select = mAmpOrAmp;
+}
+
+float IsenseCalcEsp::r()
+{
+  float reading = 0;
+  if (select == 1)
+    reading = (Vreading.readRaw() * (mVolt / resolution)) / shuntR;
+  else
+    reading = (Vreading.readRaw() * (mVolt / resolution) * 1000) / shuntR;
   return reading;
 }

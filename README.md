@@ -121,3 +121,35 @@ pot.read();
 ```
 
 ---
+
+---
+
+## IsenseCalcEsp function:
+
+The IsenseCalcEsp function is a wrapper on the analogRead, but with better code readability.
+
+To use declare the object with the:
+
+potPin - Pin to read from - Mandatory
+
+analog_resolution - analog resolution of the adc to convert the readings to milivolts or volts - Mandatory
+
+mVoltage - Input volt on the device calculated on milivolts - Mandatory
+
+shuntResistance - resistance of the shunt resistor in mOhms - Mandatory
+
+mAmpOrAmp - to output in mAmps(0) or Amps(1) - Mandatory
+
+```
+IsenseCalcEsp pot(int potPin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp);
+
+```
+
+After declaring, you can read the current:
+
+```
+pot.r();
+pot.read();
+```
+
+---
