@@ -24,7 +24,7 @@
 class pwm
 {
 public:
-	pwm(int pin, int frequency, int adc_resolution, int channel, int porcentageORdutyCycle);
+	pwm(uint8_t pin, int frequency, uint8_t resolution, uint8_t channel, bool porcentageORdutyCycle);
 	void write(int valor) { w(valor); };
 	void w(int valor);
 
@@ -36,12 +36,15 @@ private:
 class ntc_cal
 {
 public:
-	ntc_cal(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c);
-	float read(String reading) { return r(reading); };
-	float r(String reading);
+	ntc_cal(uint8_t pin, float vcc, uint32_t resistor, uint8_t analog_resolution, uint16_t kelvin, uint32_t resistance_25c);
+	int16_t read(String reading) { return r(reading); };
+	int16_t r(String reading);
 
 private:
-	float p, v, r1, ar, k, r25c;
+	uint8_t p, ar;
+	uint16_t k;
+	uint32_t r1, r25c;
+	float v;
 	ESP32AnalogRead NTCreading;
 };
 
@@ -49,14 +52,15 @@ private:
 class arRdiverCalc
 {
 public:
-	arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r1, float r2);
+	arRdiverCalc(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, uint32_t r1, uint32_t r2);
 	// Make a resistor divider voltage calculation;
 	float read() { return r(); };
 	// Make a resistor divider voltage calculation;
 	float r();
 
 private:
-	int resolution, mVolt;
+	uint8_t resolution;
+	uint16_t mVolt;
 	float resistor_r1_r2;
 	ESP32AnalogRead Vreading;
 };
@@ -65,14 +69,15 @@ private:
 class IsenseCalcEsp
 {
 public:
-	IsenseCalcEsp(int pin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp = 0);
+	IsenseCalcEsp(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, float shuntResistance);
 	// Make a resistor divider voltage calculation;
-	float read() { return r(); };
+	uint32_t read() { return r(); };
 	// Make a resistor divider voltage calculation;
-	float r();
+	uint32_t r();
 
 private:
-	int resolution, mVolt, select;
+	uint8_t resolution;
+	uint16_t mVolt;
 	float shuntR;
 	ESP32AnalogRead Vreading;
 };

@@ -1,11 +1,11 @@
 #include "utils_various_esp32.h"
 
-pwm::pwm(int pin, int frequency, int adc_resolution, int channel, int porcentageORdutyCycle)
+pwm::pwm(uint8_t pin, int frequency, uint8_t resolution, uint8_t channel, bool porcentageORdutyCycle)
 {
-  pow_res = pow(2, adc_resolution);
+  pow_res = pow(2, resolution);
   pOp = porcentageORdutyCycle;
   ch = channel;
-  ledcSetup(channel, frequency, adc_resolution);
+  ledcSetup(channel, frequency, resolution);
   ledcAttachPin(pin, channel);
 }
 
@@ -18,7 +18,7 @@ void pwm::w(int valor)
   ledcWrite(ch, dutyc);
 }
 
-ntc_cal::ntc_cal(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
+ntc_cal::ntc_cal(uint8_t pin, float vcc, uint32_t resistor, uint8_t analog_resolution, uint16_t kelvin, uint32_t resistance_25c)
 {
   v = vcc;
   r1 = resistor;
@@ -28,7 +28,7 @@ ntc_cal::ntc_cal(int pin, float vcc, int resistor, int analog_resolution, int ke
   NTCreading.attach(pin);
 }
 
-float ntc_cal::r(String reading)
+int16_t ntc_cal::r(String reading)
 {
   float RT, VR, ln, TX, T0, VRT;
   int choose = 0;
@@ -54,7 +54,7 @@ float ntc_cal::r(String reading)
   return choose;
 }
 
-arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r1, float r2)
+arRdiverCalc::arRdiverCalc(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, uint32_t r1, uint32_t r2)
 {
   Vreading.attach(pin);
   resolution = pow(2, analog_resolution);
@@ -65,25 +65,18 @@ arRdiverCalc::arRdiverCalc(int pin, int analog_resolution, int mVoltage, float r
 
 float arRdiverCalc::r()
 {
-  float reading = (Vreading.readRaw() * (mVolt / resolution)) * resistor_r1_r2;
-  return reading;
+  return ((Vreading.readRaw() * (mVolt / resolution)) * resistor_r1_r2);
 }
 
-IsenseCalcEsp::IsenseCalcEsp(int pin, int analog_resolution, int mVoltage, float shuntResistance, int mAmpOrAmp)
+IsenseCalcEsp::IsenseCalcEsp(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, float shuntResistance)
 {
   Vreading.attach(pin);
   resolution = pow(2, analog_resolution);
   mVolt = mVoltage;
   shuntR = shuntResistance;
-  select = mAmpOrAmp;
 }
 
-float IsenseCalcEsp::r()
+uint32_t IsenseCalcEsp::r()
 {
-  float reading = 0;
-  if (select == 1)
-    reading = (Vreading.readRaw() * (mVolt / resolution)) / shuntR;
-  else
-    reading = (Vreading.readRaw() * (mVolt / resolution) * 1000) / shuntR;
-  return reading;
+  return ((Vreading.readRaw() * (mVolt / resolution) * 1000) / shuntR);
 }
